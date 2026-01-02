@@ -20,14 +20,14 @@ Currently implemented:
 Run the vector demo script to interactively test vector operations:
 
 ```bash
-python3 -m src.examples.vector_demo
+python3 -m examples.vector_demo
 ```
 
 ## Project Structure
 ### Key Files
 - `src/linalg/vector.py`: Implementation of the `Vector` class and its operations.
 - `src/linalg/input.py`: Utility functions for handling user input.
-- `src/examples/vector_demo.py`: Example script demonstrating vector operations.
+- `examples/vector_demo.py`: Example script demonstrating vector operations.
 
 ### Directory Structure
 ```bash
