@@ -1,3 +1,5 @@
+import math
+
 class Vector:
     def __init__(self,components):
         self.components = components
@@ -22,4 +24,28 @@ class Vector:
     
     def unit_vector(self):
         magnitude = self.magnitude()
+        if magnitude == 0:
+            raise ValueError("Unit vector undefinned due to 0 Magnitude")
         return self.scalar_multiply(1/magnitude)
+    
+    def dot(self,other):
+        if (len(self.components)!=len(other.components)):
+            raise ValueError("Dimensions are not matching")
+        result=0
+        for i in range(len(self.components)):
+            result= self.components[i]*other.components[i]+result
+        return result
+    
+    def angle_btn_vectors(self,other):
+        denom = self.magnitude() * other.magnitude()
+        if denom == 0:
+            raise ValueError("Angle undefined for zero vector")
+        cos_theta = self.dot(other) / denom
+        cos_theta = max(-1, min(1, cos_theta))  # clamp
+        return math.acos(cos_theta)
+    
+    def cos_similarity(self,other):
+        denom = self.magnitude() * other.magnitude()
+        if denom == 0:
+            raise ValueError("Cosine similarity undefined for zero vector")
+        return self.dot(other)/(self.magnitude()*other.magnitude())

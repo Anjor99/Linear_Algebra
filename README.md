@@ -11,6 +11,9 @@ Currently implemented:
 - Scalar multiplication (`scalar_multiply`)
 - Magnitude calculation (`magnitude`)
 - Unit vector computation (`unit_vector`)
+- Dot product (`dot`)
+- Angle between vectors (`angle_btn_vectors`)
+- Cosine similarity (`cos_similarity`)
 
 ---
 
@@ -33,10 +36,10 @@ python3 -m examples.vector_demo
 ```bash
 Linear_Algebra/
 ├─ src/
-│  ├─ linalg/
-│  │  ├─ __init__.py
-│  │  ├─ vector.py
-│  │  └─ input.py
+│  └─ linalg/
+│     ├─ __init__.py
+│     ├─ vector.py
+│     └─ input.py
 ├─ examples/
 │  └─ vector_demo.py
 ├─ README.md
