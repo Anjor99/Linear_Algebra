@@ -1,4 +1,5 @@
 from src.linalg.vector import Vector
+from src.linalg.matrix import Matrix
 
 class Input:
     def __init__(self):
@@ -13,3 +14,17 @@ class Input:
             values.append(val)
 
         return Vector(values)
+    
+    def read_matrix(self, name):
+        rows = int(input(f"\nEnter the number of rows for {name}: "))
+        cols = int(input(f"\nEnter the number of cols for {name}: "))
+        data = []
+        
+        for row in range(rows):
+            new_row=[]
+            for col in range(cols):
+                val=float(input(f"Enter value for row {row + 1} and col {col + 1} of matrix {name}: "))
+                new_row.append(val)
+            data.append(new_row)
+            
+        return Matrix(data)
