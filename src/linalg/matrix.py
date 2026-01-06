@@ -24,6 +24,23 @@ class Matrix:
             result.append(new_row)
             
         return Matrix(result)
+    
+    def multiply(self,other):
+        if (self.cols!=other.rows):
+            raise ValueError("Cannot multiply given matrices , shared dimension not same")
+        result = []
+        rows = self.rows
+        cols = other.cols
+        shared_dim = self.cols
+        for i in range(rows):
+            new_row=[]
+            for j in range(cols):
+                total = 0
+                for k in range(shared_dim):
+                    total += self.data[i][k]*other.data[k][j]
+                new_row.append(total)
+            result.append(new_row)
+        return Matrix(result)
                 
     def show(self):
         for row in self.data:
