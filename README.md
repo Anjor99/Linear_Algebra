@@ -15,6 +15,13 @@ Currently implemented:
 - Angle between vectors (`angle_btn_vectors`)
 - Cosine similarity (`cos_similarity`)
 
+### Matrices
+- Matrix addition (`add`)
+- Matrix multiplication (`multiply`)
+- Transpose (`transpose`)
+- Validate shape (`_validate_shape`)
+- Print matrix (`show`)
+
 ---
 
 ## Usage
@@ -29,8 +36,10 @@ python3 -m examples.vector_demo
 ## Project Structure
 ### Key Files
 - `src/linalg/vector.py`: Implementation of the `Vector` class and its operations.
+- `src/linalg/matrix.py`: Implementation of the `Matrix` class and its operations.
 - `src/linalg/input.py`: Utility functions for handling user input.
 - `examples/vector_demo.py`: Example script demonstrating vector operations.
+- `examples/matrix_demo.py`: Example script demonstrating matrix operations.
 
 ### Directory Structure
 ```bash
@@ -39,9 +48,11 @@ Linear_Algebra/
 │  └─ linalg/
 │     ├─ __init__.py
 │     ├─ vector.py
+│     ├─ matrix.py
 │     └─ input.py
 ├─ examples/
-│  └─ vector_demo.py
+│  ├─ vector_demo.py
+│  └─ matrix_demo.py
 ├─ README.md
 └─ .gitignore
 ```
