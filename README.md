@@ -33,6 +33,13 @@ Run the vector demo script to interactively test vector operations:
 python3 -m examples.vector_demo
 ```
 
+### Matrix Demo
+Run the matrix demo script to interactively test matrix operations:
+
+```bash
+python3 -m examples.matrix_demo
+```
+
 ## Project Structure
 ### Key Files
 - `src/linalg/vector.py`: Implementation of the `Vector` class and its operations.
