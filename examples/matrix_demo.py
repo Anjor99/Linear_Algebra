@@ -34,6 +34,14 @@ def main():
         nonlocal m1, m2
         m1 = input_data.read_matrix("M1")
         m2 = input_data.read_matrix("M2")
+        
+    def transposeM1():
+        print("\nTranspose of Matrix M1:")
+        m1.transpose().show()
+        
+    def transposeM2():
+        print("\nTranspose of Matrix M2:")
+        m2.transpose().show()
 
     def exit_program():
         print("Exiting program.")
@@ -45,7 +53,9 @@ def main():
         "3": mul_ba,
         "4": show_mat,
         "5": change_matrices,
-        "6": exit_program
+        "6": transposeM1,
+        "7": transposeM2,
+        "8": exit_program
     }
 
     while True:
@@ -55,9 +65,11 @@ def main():
         print("3. Multiply matrices (M2 × M1)")
         print("4. Show matrices")
         print("5. Change matrices")
-        print("6. Exit")
+        print("6. Transpose M1")
+        print("7. Transpose M2")
+        print("8. Exit")
 
-        choice = input("Enter your choice (1-6): ")
+        choice = input("Enter your choice (1-8): ")
 
         try:
             actions[choice]()

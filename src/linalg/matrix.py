@@ -41,6 +41,17 @@ class Matrix:
                 new_row.append(total)
             result.append(new_row)
         return Matrix(result)
+    
+    def transpose(self):
+        result=[]
+        tr_rows=self.cols
+        tr_cols=self.rows
+        for i in range(tr_rows):
+            new_row=[]
+            for j in range(tr_cols):
+                new_row.append(self.data[j][i])
+            result.append(new_row)
+        return Matrix(result)
                 
     def show(self):
         for row in self.data:
