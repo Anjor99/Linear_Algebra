@@ -1,4 +1,5 @@
 from src.linalg.input import Input
+from src.linalg.matrix import Matrix
 
 def main():
     input_data = Input()
@@ -47,6 +48,19 @@ def main():
         print("Exiting program.")
         exit()
 
+    def inverseM1():
+        print("\nInverse of Matrix M1:")
+        m1.inverse().show()
+
+    def inverseM2():
+        print("\nInverse of Matrix M2:")
+        m2.inverse().show()
+        
+    def generate_identity():
+        size = int(input("Enter size for identity matrix: "))
+        print(f"\nIdentity Matrix of size {size}:")
+        Matrix.generate_identity(size).show()
+
     actions = {
         "1": add,
         "2": mul_ab,
@@ -55,7 +69,10 @@ def main():
         "5": change_matrices,
         "6": transposeM1,
         "7": transposeM2,
-        "8": exit_program
+        "8": inverseM1,
+        "9": inverseM2,
+        "10": generate_identity,
+        "11": exit_program
     }
 
     while True:
@@ -67,7 +84,10 @@ def main():
         print("5. Change matrices")
         print("6. Transpose M1")
         print("7. Transpose M2")
-        print("8. Exit")
+        print("8. Inverse of M1")
+        print("9. Inverse of M2")
+        print("10. Generate identity matrix")
+        print("11. Exit")
 
         choice = input("Enter your choice (1-8): ")
 

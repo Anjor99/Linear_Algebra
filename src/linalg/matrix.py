@@ -56,6 +56,40 @@ class Matrix:
     def show(self):
         for row in self.data:
             print(" ".join(str(col) for col in row))
+            
+    def generate_identity(size):
+        identity=[]
+        for i in range(size):
+            new_row=[]
+            for j in range(size):
+                if i==j:
+                    new_row.append(1)
+                else:
+                    new_row.append(0)
+            identity.append(new_row)
+        return Matrix(identity)
 
             
+    def inverse(self):
+        if self.rows != self.cols:
+            raise ValueError("Only square matrices can be inverted")
+        
+        n = self.rows
+        identity = Matrix.generate_identity(n)
+        augmented = [self.data[i] + identity.data[i] for i in range(n)]
+        
+        for i in range(n):
+            pivot = augmented[i][i]
+            if pivot == 0:
+                raise ValueError("Matrix is singular and cannot be inverted")
+            for j in range(2*n):
+                augmented[i][j] /= pivot
             
+            for k in range(n):
+                if k != i:
+                    factor = augmented[k][i]
+                    for j in range(2*n):
+                        augmented[k][j] -= factor * augmented[i][j]
+        
+        inverse_data = [row[n:] for row in augmented]
+        return Matrix(inverse_data)
