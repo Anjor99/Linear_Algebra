@@ -56,6 +56,14 @@ def main():
         print("\nInverse of Matrix M2:")
         m2.inverse().show()
         
+    def detM1():
+        print("\nDeterminant of Matrix M1:")
+        print(m1.det())
+        
+    def detM2():
+        print("\nDeterminant of Matrix M2:")
+        print(m2.det())
+        
     def generate_identity():
         size = int(input("Enter size for identity matrix: "))
         print(f"\nIdentity Matrix of size {size}:")
@@ -72,7 +80,9 @@ def main():
         "8": inverseM1,
         "9": inverseM2,
         "10": generate_identity,
-        "11": exit_program
+        "11": detM1,
+        "12": detM2,
+        "13": exit_program
     }
 
     while True:
@@ -87,9 +97,11 @@ def main():
         print("8. Inverse of M1")
         print("9. Inverse of M2")
         print("10. Generate identity matrix")
-        print("11. Exit")
+        print("11. Determinant of M1")
+        print("12. Determinant of M2")
+        print("13. Exit")
 
-        choice = input("Enter your choice (1-8): ")
+        choice = input("Enter your choice (1-13): ")
 
         try:
             actions[choice]()

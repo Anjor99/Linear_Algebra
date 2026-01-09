@@ -93,3 +93,35 @@ class Matrix:
         
         inverse_data = [row[n:] for row in augmented]
         return Matrix(inverse_data)
+    
+    def det(self):
+        if self.rows != self.cols:
+            raise ValueError("Only square matrices have determinants")
+        return self._det_recursive(self.data)
+
+    def _det_recursive(self, matrix):
+        n = len(matrix)
+
+        # Base case: 1×1
+        if n == 1:
+            return matrix[0][0]
+
+        # Base case: 2×2
+        if n == 2:
+            return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
+
+        determinant = 0
+
+        # Cofactor expansion along first row
+        for col in range(n):
+            sign = (-1) ** col
+            submatrix = self._get_submatrix(matrix, 0, col)
+            determinant += sign * matrix[0][col] * self._det_recursive(submatrix)
+
+        return determinant
+
+    def _get_submatrix(self, matrix, remove_row, remove_col):
+        return [
+            [matrix[i][j] for j in range(len(matrix)) if j != remove_col]
+            for i in range(len(matrix)) if i != remove_row
+        ]
