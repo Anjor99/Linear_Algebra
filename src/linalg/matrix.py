@@ -1,3 +1,5 @@
+import math
+from src.linalg.vector import Vector
 class Matrix:
     def __init__(self, data ):
         self.data = data  # Initialize an empty list to hold matrix rows
@@ -125,3 +127,69 @@ class Matrix:
             [matrix[i][j] for j in range(len(matrix)) if j != remove_col]
             for i in range(len(matrix)) if i != remove_row
         ]
+        
+    def multiply_vector(self, vector):
+        if self.cols != len(vector.components):
+            raise ValueError("Matrix columns must match vector size")
+
+        result = []
+        for row in self.data:
+            total = 0
+            for a, b in zip(row, vector.components):
+                total += a * b
+            result.append(total)
+
+        return Vector(result)
+    
+    def is_eigenvector(self, vector, lam, tol=1e-6):
+        Ax = self.multiply_vector(vector)
+        lam_x = vector.scalar_multiply(lam)
+
+        for a, b in zip(Ax.components, lam_x.components):
+            if abs(a - b) > tol:
+                return False
+        return True
+
+    
+    def eigenvalues_2x2(self):
+        if self.rows != 2 or self.cols != 2:
+            raise ValueError("Eigenvalue solver only implemented for 2x2 matrices")
+
+        a, b = self.data[0]
+        c, d = self.data[1]
+
+        trace = a + d
+        determinant = a*d - b*c
+
+        disc = trace**2 - 4 * determinant
+
+        if disc < 0:
+            return None  # no real eigenvalues
+
+        sqrt_disc = math.sqrt(disc)
+
+        lam1 = (trace + sqrt_disc) / 2
+        lam2 = (trace - sqrt_disc) / 2
+
+        return lam1, lam2
+
+    def eigenvector_2x2(self, eigenvalue):
+        if self.rows != 2 or self.cols != 2:
+            raise ValueError("Eigenvector solver only implemented for 2x2 matrices")
+
+        a, b = self.data[0]
+        c, d = self.data[1]
+
+        A = [[a - eigenvalue, b],
+             [c, d - eigenvalue]]
+
+        if A[0][0] != 0:
+            x2 = 1
+            x1 = -A[0][1] / A[0][0]
+        elif A[1][0] != 0:
+            x2 = 1
+            x1 = -A[1][1] / A[1][0]
+        else:
+            x1, x2 = 1, 0
+
+        return Vector([x1, x2])

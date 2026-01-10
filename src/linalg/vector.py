@@ -25,7 +25,7 @@ class Vector:
     def unit_vector(self):
         magnitude = self.magnitude()
         if magnitude == 0:
-            raise ValueError("Unit vector undefinned due to 0 Magnitude")
+            raise ValueError("Unit vector undefined due to 0 Magnitude")
         return self.scalar_multiply(1/magnitude)
     
     def dot(self,other):
@@ -49,3 +49,4 @@ class Vector:
         if denom == 0:
             raise ValueError("Cosine similarity undefined for zero vector")
         return self.dot(other)/(self.magnitude()*other.magnitude())
+    
