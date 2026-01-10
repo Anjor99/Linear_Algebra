@@ -21,6 +21,16 @@ Currently implemented:
 - Transpose (`transpose`)
 - Validate shape (`_validate_shape`)
 - Print matrix (`show`)
+- Generate identity matrix (`identity`)
+- Dynamic inverse of square matrices (`inverse`)
+- Determinant calculation (`det`)
+- Recursive determinant calculation (`_det_recursive`)
+- Submatrix extraction (`_get_submatrix`)
+- Multiply matrix by vector (`multiply_vector`)
+- Check if a vector is an eigenvector (`is_eigenvector`)
+- Calculate eigenvalues for 2x2 matrices (`eigenvalues_2x2`)
+- Calculate eigenvectors for 2x2 matrices (`eigenvector_2x2`)
+
 
 ---
 
