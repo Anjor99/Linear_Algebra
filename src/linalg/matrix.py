@@ -1,4 +1,5 @@
 import math
+import numpy as np
 from src.linalg.vector import Vector
 class Matrix:
     def __init__(self, data ):
@@ -193,3 +194,12 @@ class Matrix:
             x1, x2 = 1, 0
 
         return Vector([x1, x2])
+    
+    def svd(self):
+        np_matrix = np.array(self.data)
+        U, S, VT = np.linalg.svd(np_matrix)
+        S_matrix = np.zeros_like(np_matrix, dtype=float)
+        for i in range(min(U.shape[0], VT.shape[0])):
+            S_matrix[i][i] = S[i]
+        return Matrix(U.tolist()), Matrix(S_matrix.tolist()), Matrix(VT.tolist())
+        

@@ -44,6 +44,18 @@ def main():
         print("\nRe-enter matrices:")
         m1 = input_data.read_matrix("M1")
         m2 = input_data.read_matrix("M2")
+        
+    def svd_m1():
+        U, S, VT = m1.svd()
+        show_result("U Matrix of M1 SVD:", U)
+        show_result("S Matrix of M1 SVD:", S)
+        show_result("VT Matrix of M1 SVD:", VT)
+
+    def svd_m2():
+        U, S, VT = m2.svd()
+        show_result("U Matrix of M2 SVD:", U)
+        show_result("S Matrix of M2 SVD:", S)
+        show_result("VT Matrix of M2 SVD:", VT)
 
     # -------------------------
     # Matrix Properties
@@ -114,7 +126,9 @@ def main():
         "11": det_m1,
         "12": det_m2,
         "13": eigen_demo_m1,
-        "14": exit_program,
+        "14": svd_m1,
+        "15": svd_m2,
+        "16": exit_program,
     }
 
     # -------------------------
@@ -135,9 +149,11 @@ def main():
         print("11. Determinant of M1")
         print("12. Determinant of M2")
         print("13. Eigenvalues & Eigenvectors of M1 (2×2)")
-        print("14. Exit")
+        print("14. SVD of M1")
+        print("15. SVD of M2")
+        print("16. Exit")
 
-        choice = input("Enter your choice (1-14): ")
+        choice = input("Enter your choice (1-16): ")
 
         try:
             actions[choice]()
