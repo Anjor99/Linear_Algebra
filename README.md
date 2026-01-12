@@ -30,6 +30,7 @@ Currently implemented:
 - Check if a vector is an eigenvector (`is_eigenvector`)
 - Calculate eigenvalues for 2x2 matrices (`eigenvalues_2x2`)
 - Calculate eigenvectors for 2x2 matrices (`eigenvector_2x2`)
+- Singular Value Decomposition (SVD) (`svd`)
 
 
 ---
